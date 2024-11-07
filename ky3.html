@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheFlash2k</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="icon" href="https://www.theflash2k.me/_next/image?url=%2Fstatic%2Fimages%2Fphlesh.jpg&w=256&q=75" type="image/png">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://c4.wallpaperflare.com/wallpaper/399/895/627/hacking-mr-robot-tv-series-tv-wallpaper-thumb.jpg'); /* Change this URL to your wallpaper */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+            font-family: 'Courier New', Courier, monospace; /* Futuristic font */
+            color: #00ff00;
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars from appearing */
+            position: relative;
+        }
+        .elements {
+            display: flex; /* Row layout */
+            margin-bottom: 20px; /* Space between elements and clock */
+            animation: fadeIn 2s; /* Fade in effect */
+        }
+        .element {
+            width: 80px;
+            height: 100px;
+            background-color: rgba(74, 74, 74, 0.8); /* Semi-transparent background */
+            border: 2px solid #00ff00;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            position: relative;
+            transition: transform 0.3s, background-color 0.3s; /* Animation effect */
+        }
+        .element:hover {
+            transform: scale(1.1); /* Scale on hover */
+            background-color: rgba(0, 255, 0, 0.5); /* Change color on hover */
+        }
+        .symbol {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .number {
+            font-size: 20px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .clock {
+            font-size: 30px; /* Larger clock size */
+            color: #00ff00;
+            background: rgba(34, 34, 34, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-align: center;
+            animation: glow 1s infinite alternate; /* Glow animation */
+            letter-spacing: 2px; /* Space out letters for a techy feel */
+        }
+  /* Particle Animation Styles */
+        .particle {
+            position: absolute;
+            border-radius: 60%;
+            background: rgba(0, 255, 255, 0.3);
+            animation: float 1s;
+        }
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00;
+            }
+            100% {
+                text-shadow: 0 0 30px #00ff00, 0 0 40px #00ff00;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .tooltip {
+            display: none;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 10;
+            transition: opacity 0.3s;
+        }
+        .social-buttons {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            gap: 15px; /* Space between buttons */
+        }
+        .social-button {
+            background-color: rgba(34, 34, 34, 0.8);
+            color: #00ff00;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .social-button:hover {
+            transform: scale(1.1); /* Scale on hover */
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="elements" id="elements">
+        <div class="element" data-symbol="Ge">
+            <div class="number">32</div>
+            <div class="symbol">Ge</div>
+        </div>
+        <div class="element" data-symbol="Ni">
+            <div class="number">28</div>
+            <div class="symbol">Ni</div>
+        </div>
+        <div class="element" data-symbol="U">
+            <div class="number">92</div>
+            <div class="symbol">U</div>
+        </div>
+        <div class="element" data-symbol="S">
+            <div class="number">16</div>
+            <div class="symbol">S</div>
+        </div>
+    </div>
+    <div class="clock" id="clock">00:00:00</div>
+    <div class="tooltip" id="tooltip">Ali Atif Wajid</div>
+    
+   <div class="social-buttons">
+        <button class="social-button" onclick="window.open('https://theflash2k.me/', '_blank')">
+            <i class="fab fa-website"></i>
+        </button>
+        <button class="social-button" onclick="window.open('https://twitter.com/alitaqiwajid', '_blank')">
+            <i class="fab fa-twitter"></i>
+        </button>
+        <button class="social-button" onclick="window.open('https://github.com/TheFlash2k', '_blank')">
+            <i class="fab fa-github"></i>
+        </button>
+            
+              <button class="social-button" onclick="window.open('https://www.instagram.com/alitaqiwajid/', '_blank')">
+            <i class="fab fa-instagram"></i>
+            </button>
+         </button>
+    </div>
+
+    <script>
+        const elements = document.querySelectorAll('.element');
+        const tooltip = document.getElementById('tooltip');
+
+        // Function to create particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            const size = Math.random() * 10 + 5; // Random size between 5 and 15
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+            particle.style.bottom = '0px'; // Start from the bottom
+            document.body.appendChild(particle);
+
+            // Animation duration
+            particle.style.animationDuration = (Math.random() * 3 + 2) + 's'; // Random duration between 2s and 5s
+
+            // Remove particle after animation
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        }
+
+        // Generate particles continuously
+        setInterval(createParticle, 100);
+
+        elements.forEach(element => {
+            element.addEventListener('mouseover', (event) => {
+                tooltip.style.display = 'block';
+                tooltip.style.left = `${event.pageX}px`;
+                tooltip.style.top = `${event.pageY}px`;
+                tooltip.style.opacity = 1;
+            });
+
+            element.addEventListener('mousemove', (event) => {
+                tooltip.style.left = `${event.pageX}px`;
+                tooltip.style.top = `${event.pageY}px`;
+            });
+
+            element.addEventListener('mouseleave', () => {
+                tooltip.style.display = 'none';
+                tooltip.style.opacity = 0;
+            });
+        });
+
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call to display the clock immediately
+    </script>
+</body>
+</html>
