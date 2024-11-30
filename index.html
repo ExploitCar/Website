@@ -3,87 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlayExploit</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-        <link rel="icon" href="https://avatars.githubusercontent.com/u/152737525?v=4" type="image/png">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ysociety</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- Font Awesome for icons -->
     <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-image: url('https://c4.wallpaperflare.com/wallpaper/108/358/525/mr-robot-fsociety-e-corp-evil-corp-wallpaper-preview.jpg'); /* Change this URL to your wallpaper */
-            background-size: cover; /* Cover the entire background */
-            background-position: center; /* Center the background image */
-            font-family: 'Courier New', Courier, monospace; /* Futuristic font */
-            color: #00ff00;
+        /* General Reset */
+        * {
             margin: 0;
-            overflow: hidden; /* Prevent scrollbars from appearing */
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            background-image: url('https://via.placeholder.com/1200x800');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Header */
+        header {
+            background-color: transparent;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: relative;
         }
-        .elements {
-            display: flex; /* Row layout */
-            margin-bottom: 20px; /* Space between elements and clock */
-            animation: fadeIn 2s; /* Fade in effect */
+
+        header nav .logo a {
+            color: #ff0000; /* Changed from #00ff88 to #ff0000 (red) */
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 2px;
+            animation: moveText 4s ease-in-out infinite;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000; /* Changed from green to red */
         }
-        .element {
-            width: 80px;
-            height: 100px;
-            background-color: rgba(74, 74, 74, 0.8); /* Semi-transparent background */
-            border: 2px solid #00ff00;
-            border-radius: 5px;
+
+        header nav ul.nav-links {
+            list-style: none;
             display: flex;
-            flex-direction: column;
+        }
+
+        header nav ul.nav-links li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        header nav ul.nav-links li a {
+            color: #fff;
+            font-size: 1.1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            padding: 10px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        header nav ul.nav-links li a:hover {
+            color: #ff0000; /* Changed hover color to red */
+        }
+
+        /* Social Buttons */
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-button {
+            background-color: #ff0000; /* Red background for buttons */
+            color: #fff;
+            padding: 15px;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-button:hover {
+            background-color: #e60000; /* Darker red on hover */
+            transform: scale(1.1);
+        }
+
+        .social-button i {
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            color: #fff;
+            height: 100vh;
+            display: flex;
             justify-content: center;
             align-items: center;
-            margin: 10px;
-            position: relative;
-            transition: transform 0.3s, background-color 0.3s; /* Animation effect */
-        }
-        .element:hover {
-            transform: scale(1.1); /* Scale on hover */
-            background-color: rgba(0, 255, 0, 0.5); /* Change color on hover */
-        }
-        .symbol {
-            font-size: 36px;
-            font-weight: bold;
-        }
-        .number {
-            font-size: 20px;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-        .clock {
-            font-size: 30px; /* Larger clock size */
-            color: #00ff00;
-            background: rgba(34, 34, 34, 0.8);
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00;
-            position: absolute;
-            top: 20px;
-            left: 20px;
             text-align: center;
-            animation: glow 1s infinite alternate; /* Glow animation */
-            letter-spacing: 2px; /* Space out letters for a techy feel */
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: inset 0 0 50px rgba(255, 0, 0, 0.5); /* Changed to red */
+            animation: fadeIn 3s ease-out;
         }
-  /* Particle Animation Styles */
-        .particle {
+
+        .hero .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 2s ease-out;
+        }
+
+        .hero .headline {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #ff0000; /* Changed from green to red */
+            animation: slideUp 2s ease-out;
+            text-shadow: 0 0 10px #ff0000; /* Changed from green to red */
+        }
+
+        .hero .sub-headline {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .hero .cta-btn {
+            background-color: #ff0000; /* Changed from green to red */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero .cta-btn:hover {
+            background-color: #e60000; /* Changed from green to red */
+            transform: scale(1.1);
+        }
+
+        /* Section Style for Cyberpunk Look */
+        .section {
+            padding: 80px 20px;
+            background-color: #222;
+            text-align: center;
+            border-bottom: 2px solid #444;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2); /* Changed to red */
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: #ff0000; /* Red title */
+            text-shadow: 0 0 10px #ff0000; /* Red text shadow */
+        }
+
+        .section p {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 -2px 20px rgba(255, 0, 0, 0.3); /* Changed to red */
+        }
+
+        footer p {
+            color: #fff;
+            font-size: 1rem;
+        }
+        /* Blinking Effect for Links */
+        header nav ul.nav-links li a::after {
+            content: '';
             position: absolute;
-            border-radius: 60%;
-            background: rgba(0, 255, 255, 100);
-            animation: float 1s;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, red, blue);
+            bottom: -5px;
+            left: 0;
+            animation: blink 1.5s infinite;
         }
-        @keyframes glow {
+
+        @keyframes blink {
             0% {
-                text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00;
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.3;
             }
             100% {
-                text-shadow: 0 0 30px #00ff00, 0 0 40px #00ff00;
+                opacity: 1;
             }
         }
+
+        /* Hero Section */
+        .hero {
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: inset 0 0 50px rgba(255, 0, 0, 0.5); /* Changed to red */
+            animation: fadeIn 3s ease-out;
+        }
+
+        .hero .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 2s ease-out;
+        }
+
+        .hero .headline {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #ff0000; /* Changed from green to red */
+            animation: slideUp 2s ease-out;
+            text-shadow: 0 0 10px #ff0000; /* Changed from green to red */
+        }
+
+        .hero .sub-headline {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .hero .cta-btn {
+            background-color: #ff0000; /* Changed from green to red */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero .cta-btn:hover {
+            background-color: #e60000; /* Changed from green to red */
+            transform: scale(1.1);
+        }
+
+        /* Animation */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -92,151 +282,166 @@
                 opacity: 1;
             }
         }
-        .tooltip {
-            display: none;
-            position: absolute;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            z-index: 10;
-            transition: opacity 0.3s;
-        }
-        .social-buttons {
-            position: absolute;
-            bottom: 20px;
-            display: flex;
-            gap: 15px; /* Space between buttons */
-        }
-        .social-button {
-            background-color: rgba(34, 34, 34, 0.8);
-            color: #00ff00;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 15px;
-            font-size: 24px;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        .social-button:hover {
-            transform: scale(1.1); /* Scale on hover */
-        }
-        @keyframes float {
-            0% {
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes moveText {
+            0% {
+                transform: translateX(-30px);
             }
             50% {
-                transform: translateY(-30px);
+                transform: translateX(30px);
             }
             100% {
-                transform: translateY(0);
+                transform: translateX(-30px);
             }
+        }
+
+        /* Section Style for Cyberpunk Look */
+        .section {
+            padding: 80px 20px;
+            background-color: #222;
+            text-align: center;
+            border-bottom: 2px solid #444;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2); /* Changed to red */
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 -2px 20px rgba(255, 0, 0, 0.3); /* Changed to red */
+        }
+
+        footer p {
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        footer .social-links a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: #ff0000; /* Changed to red */
+        }
+       header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            width: 50px; /* Adjust logo size */
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="elements" id="elements">
-        <div class="element" data-symbol="Ge">
-            <div class="number">32</div>
-            <div class="symbol">Ge</div>
-        </div>
-        <div class="element" data-symbol="Ni">
-            <div class="number">28</div>
-            <div class="symbol">Ni</div>
-        </div>
-        <div class="element" data-symbol="U">
-            <div class="number">92</div>
-            <div class="symbol">U</div>
-        </div>
-        <div class="element" data-symbol="S">
-            <div class="number">16</div>
-            <div class="symbol">S</div>
-        </div>
-    </div>
-    <div class="clock" id="clock">00:00:00</div>
-    <div class="tooltip" id="tooltip">I am PlayExploits</div>
-    
-    <div class="social-buttons">
-        <button class="social-button" onclick="window.open('https://discord.com/channels/1278761741282705428', '_blank')">
-            <i class="fab fa-discord"></i>
-        </button>
-        <button class="social-button" onclick="window.open('https://x.com/PlayExploits/', '_blank')">
-            <i class="fab fa-twitter"></i>
-        </button>
-        <button class="social-button" onclick="window.open('https://www.youtube.com/@PlayExploits', '_blank')">
-            <i class="fab fa-youtube"></i>
-        </button>
-        <button class="social-button" onclick="window.open('https://www.reddit.com/user/Play-Exploits/', '_blank')">
-            <i class="fab fa-reddit"></i>
-        </button>
-        <button class="social-button" onclick="window.open('https://github.com/PlayExploits', '_blank')">
-            <i class="fab fa-github"></i>
-        </button>
-        <button class="social-button" onclick="window.open('https://app.hackthebox.com/profile/1749498', '_blank')">
-            <i class="fab fa-hackerrank"></i> <!-- Replace with Hack The Box logo if available -->
-        <button class="social-button" onclick="window.open('https://www.facebook.com/PlayExploits/', '_blank')">
-            <i class="fab fa-facebook"></i>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <div class="logo">
+              <img src="https://i.pinimg.com/736x/3f/4e/0e/3f4e0e14ccc9f742b2c0a6554bf625d2.jpg" alt="Logo">
+                <a href="#">Ysociety</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-         </button>
-    </div>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1 class="headline">Welcome to Ysociety</h1>
+            <p class="sub-headline">I am Rana M.Sinan Adil, Founder of [Ysociety]
+                          <br/> Hello friend nice to having you in Ysociety</p>
+            <a href="https://ysociety.medium.com" target="_blank"class="cta-btn" >Discover More</a>
+        </div>
+    </section>
 
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>About Ysociety</h2>
+        <p>We are a community of cybersecurity experts focused on solving today's most pressing security challenges. Our founder, Sinan, is a seasoned pentester and a thought leader in the cybersecurity space.</p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <h2>Our Services</h2>
+        <p>Penetration testing, vulnerability assessment, and security audits to secure your digital world.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>If you are interested in joining our community or have any questions, feel free to reach out to us!</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Ysociety | Founded by Sinan</p>
+        <div class="social-buttons">
+            <button class="social-button" onclick="window.open('https://www.linkedin.com/in/ysociety/', '_blank')">
+                <i class="fab fa-linkedin"></i>
+            </button>
+            <button class="social-button" onclick="window.open('https://twitter.com/ysocietys', '_blank')">
+                <i class="fab fa-twitter"></i>
+            </button>
+            <button class="social-button" onclick="window.open('https://github.com/ysociety', '_blank')">
+                <i class="fab fa-github"></i>
+            </button>
+            <button class="social-button" onclick="window.open('https://www.medium.com/@ysociety', '_blank')">
+                <i class="fab fa-medium"></i>
+            </button>
+            <button class="social-button" onclick="window.open('https://www.reddit.com/user/Ysocietys/', '_blank')">
+                <i class="fab fa-reddit"></i>
+            </button>
+            <button class="social-button" onclick="window.open('https://www.pinterest.com/ysocietys/', '_blank')">
+                <i class="fab fa-printerest"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Scroll and Effects -->
     <script>
-        const elements = document.querySelectorAll('.element');
-        const tooltip = document.getElementById('tooltip');
-
-        // Function to create particles
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            const size = Math.random() * 10 + 5; // Random size between 5 and 15
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            particle.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
-            particle.style.bottom = '0px'; // Start from the bottom
-            document.body.appendChild(particle);
-
-            // Animation duration
-            particle.style.animationDuration = (Math.random() * 3 + 2) + 's'; // Random duration between 2s and 5s
-
-            // Remove particle after animation
-            particle.addEventListener('animationend', () => {
-                particle.remove();
-            });
-        }
-
-        // Generate particles continuously
-        setInterval(createParticle, 100);
-
-        elements.forEach(element => {
-            element.addEventListener('mouseover', (event) => {
-                tooltip.style.display = 'block';
-                tooltip.style.left = `${event.pageX}px`;
-                tooltip.style.top = `${event.pageY}px`;
-                tooltip.style.opacity = 1;
-            });
-
-            element.addEventListener('mousemove', (event) => {
-                tooltip.style.left = `${event.pageX}px`;
-                tooltip.style.top = `${event.pageY}px`;
-            });
-
-            element.addEventListener('mouseleave', () => {
-                tooltip.style.display = 'none';
-                tooltip.style.opacity = 0;
+        // Smooth Scroll Effect for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
-
-        function updateClock() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
-        }
-
-        setInterval(updateClock, 1000);
-        updateClock(); // Initial call to display the clock immediately
     </script>
 </body>
 </html>
